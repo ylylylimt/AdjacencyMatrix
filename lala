@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Graph {
+private:
+    vector<vector<int>> adjacencyMatrix;
+
+public:
+    Graph(int v) {
+        adjacencyMatrix.assign(v, vector<int>(v, 0));
+    }
+
+    void displayMatrix() {
+        for (size_t i = 0; i < adjacencyMatrix.size(); i++) {
+            for (size_t j = 0; j < adjacencyMatrix.at(i).size(); j++) {
+                cout << adjacencyMatrix.at(i).at(j) << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    void addEdge(int u, int v) {
+        adjacencyMatrix.at(u).at(v) = 1;
+        adjacencyMatrix.at(v).at(u) = 1;
+    }
+};
+
+int main(int argc, char* argv[]) {
+    int v = 8;
+    Graph lala(v);
+
+    lala.addEdge(0, 1);
+    lala.addEdge(1, 2);
+    lala.addEdge(2, 1);
+    lala.addEdge(3, 4);
+    lala.addEdge(4, 5);
+    lala.addEdge(5, 6);
+    lala.addEdge(6, 2);
+    lala.addEdge(4, 7);
+    lala.addEdge(6, 7);
+
+    lala.displayMatrix();
+    return 0;
+}
